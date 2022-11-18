@@ -2,6 +2,10 @@ import "./App.css";
 import React from "react";
 import ReactFCCtest from "react-fcctest";
 
+// I was mostly focusing a lot on the CSS and the layout of the page than refractoring my code and making it more efficient. 
+// this code is not very DRY and I know that.
+// I will be working on that in the future...
+
 const nums = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0];
 const ops = ["/", "*", "-", "+"];
 
@@ -16,10 +20,6 @@ class App extends React.Component {
 handleClick = (e) => {
     const { innerText } = e.target;
     const {lastPressed, calc } = this.state;
-    
-
- 
-
      switch (innerText) {
       case "AC": {
         this.setState({
@@ -28,7 +28,6 @@ handleClick = (e) => {
         break;
       }
       case '=': {
-        // so most of the calculation work is in this eval() method
         const evaluated = eval(calc);
         this.setState({
       
@@ -167,9 +166,6 @@ handleClick = (e) => {
         </div>
       </div>
     );
-    {
- 
-    }
   }
 }
 
