@@ -1,5 +1,7 @@
 # React Old School calculator
 
+![ScreenShot](JsSuper90.png)
+
 I made this project as part of the Free code camp certification program
 The design is inspired by old calculators from the 80/90's.
 
@@ -11,3 +13,5 @@ This was a nice way to familiarize myself with react states, objects, switch cas
 # Live preview of the project
 
 you can check this project [here](https://ihsenben.github.io/oldschool_calculator-FCC/)
+
+
