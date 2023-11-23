@@ -2,17 +2,16 @@
   box-sizing: border-box;
 }
 
-
 @font-face {
-  font-family: 'commando';
+  font-family: "commando";
 
-  src: url(./fonts/commando.ttf) format('truetype');
+  src: url(./fonts/commando.ttf) format("truetype");
 }
 
 @font-face {
-  font-family: 'Alien';
- 
-  src: url(./fonts/SFAlienEncounters-Italic.ttf) format('truetype');
+  font-family: "Alien";
+
+  src: url(./fonts/SFAlienEncounters-Italic.ttf) format("truetype");
 }
 .box {
   background-color: #b9cfd4;
@@ -30,17 +29,22 @@
   align-items: center;
   border-radius: 6px;
   position: relative;
-width: 400px;
+  width: 400px;
   margin: 0 auto;
   padding: 44px 24px 24px 24px;
-  background: #E6E1DA;
-  box-shadow: 0 8px 10px -4px rgba(0, 0, 0, 0.5), 0 40px 50px -15px rgba(0, 0, 0, 0.2), inset 0 -2px 8px 1px rgba(204, 194, 181, 1), 0px 2px 1px 0px rgba(255,255,255,0.8) inset;
+  background: #e6e1da;
+  box-shadow:
+    0 8px 10px -4px rgba(0, 0, 0, 0.5),
+    0 40px 50px -15px rgba(0, 0, 0, 0.2),
+    inset 0 -2px 8px 1px rgba(204, 194, 181, 1),
+    0px 2px 1px 0px rgba(255, 255, 255, 0.8) inset;
 }
 
 .calculator__screen {
   padding: 15px;
   display: table;
   margin: 0 auto;
+  width: 100%;
   font-family: "VT323", monospace;
   border-radius: 2px;
   font-size: 35px;
@@ -50,36 +54,39 @@ width: 400px;
   text-shadow: 0 4px rgba(0, 0, 0, 0.1);
   background: #c6c5ad;
   line-height: 45px;
-
-  box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.5),
-    inset 0 2px 12px 0 rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(0, 0, 0, 0.7);
+  box-shadow:
+    inset 0 1px 2px 0 rgba(0, 0, 0, 0.5),
+    inset 0 2px 12px 0 rgba(0, 0, 0, 0.4),
+    0 0 0 2px rgba(0, 0, 0, 0.7);
   overflow: hidden;
 }
 
-.brand{
+.brand {
   margin: 0;
-   padding-left: 40px;
-   font-family: 'Commando', arial;
-  font-size:30px;
-  
-  color: #772F1A;
+  padding-left: 40px;
+  font-family: "Commando", arial;
+  font-size: 30px;
+  color: #772f1a;
 }
-span{
+
+span {
   font-size: 1.2em;
   font-family: Alien;
   font-weight: normal;
-  text-shadow: 2px 2px 0 #bcbcbc, 4px 4px 0 #9c9c9c, 12px 0px 0px rgba(0,0,0,0);
-  color: #FE621D;
-  background: #E6E1DA;
- 
+  text-shadow:
+    2px 2px 0 #bcbcbc,
+    4px 4px 0 #9c9c9c,
+    12px 0px 0px rgba(0, 0, 0, 0);
+  color: #fe621d;
+  background: #e6e1da;
 }
-.calculator__sun-container{
+
+.calculator__sun-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   width: 100%;
-
 }
 
 .calculator__sun-battery {
@@ -95,19 +102,21 @@ span{
     rgba(255, 255, 255, 0.1) 26px,
     rgba(255, 255, 255, 0.1) 27px
   );
-  box-shadow: 0 -3px 5px -3px rgba(255, 255, 255, 0.2),
-    5px 0 3px -5px rgba(255, 255, 255, 0.8), 0 2px 5px -2px rgba(0, 0, 0, 0.5),
-    -3px 0 3px -1px rgba(0, 0, 0, 0.8), inset 0 -5px 3px -3px rgba(0, 0, 0, 0.5),
+  box-shadow:
+    0 -3px 5px -3px rgba(255, 255, 255, 0.2),
+    5px 0 3px -5px rgba(255, 255, 255, 0.8),
+    0 2px 5px -2px rgba(0, 0, 0, 0.5),
+    -3px 0 3px -1px rgba(0, 0, 0, 0.8),
+    inset 0 -5px 3px -3px rgba(0, 0, 0, 0.5),
     inset 5px 0 5px -2px rgba(0, 0, 0, 0.8);
 }
 
 .calculator__screen-container {
-
- 
   margin: 0;
   border-radius: 3px;
   border-right: 1px solid rgba(255, 255, 255, 0.2);
 }
+
 button {
   border-radius: 4px;
   margin: 5px;
@@ -120,33 +129,33 @@ button {
   border: 1px solid rgba(0, 0, 0, 0.5);
   height: 50px;
   color: #6f6243;
-  text-shadow: 0 1px 0 #ffffff, 0 -1px rgba(0, 0, 0, 0.2);
+  text-shadow:
+    0 1px 0 #ffffff,
+    0 -1px rgba(0, 0, 0, 0.2);
   font-size: 20px;
   line-height: 25px;
   box-sizing: border-box;
   background: #efebe5;
   margin-top: 20px;
   margin-left: 10px;
-  box-shadow: inset 0 1px 0 0 #ffffff, inset 0 -3px 1px 0 rgba(93, 80, 51, 0.3),
+  box-shadow:
+    inset 0 1px 0 0 #ffffff,
+    inset 0 -3px 1px 0 rgba(93, 80, 51, 0.3),
     inset 0 -5px 10px 2px rgba(204, 196, 178, 0.8),
-    inset 0 4px 6px 0 rgba(255, 255, 255, 0.8), 0 -1px 0px 2px #ccc4b2,
+    inset 0 4px 6px 0 rgba(255, 255, 255, 0.8),
+    0 -1px 0px 2px #ccc4b2,
     0 1px 0px 2px rgba(255, 255, 255, 0.7);
 }
 
 .button_container {
   position: relative;
-  width: 100%;
-  height: 100%;
-  padding: 0;
   text-align: center;
   align-items: center;
   justify-content: center;
+  display: flex;
 }
 
-
-
-
-.button_container > button{
+.button_container > button {
   border-radius: 4px;
   box-sizing: border-box;
   position: relative;
@@ -154,18 +163,21 @@ button {
   width: 64px;
   border: 1px solid rgba(0, 0, 0, 0.5);
   height: 50px;
-font-size: 20px;
+  font-size: 20px;
   line-height: 25px;
- margin-top: 12px;
+  margin-top: 12px;
   margin-left: 10px;
-  box-shadow: inset 0 1px 0 0 #ffffff, inset 0 -3px 1px 0 rgba(93, 80, 51, 0.3),
+  box-shadow:
+    inset 0 1px 0 0 #ffffff,
+    inset 0 -3px 1px 0 rgba(93, 80, 51, 0.3),
     inset 0 -5px 10px 2px rgba(204, 196, 178, 0.8),
-    inset 0 4px 6px 0 rgba(255, 255, 255, 0.8), 0 -1px 0px 2px #ccc4b2,
+    inset 0 4px 6px 0 rgba(255, 255, 255, 0.8),
+    0 -1px 0px 2px #ccc4b2,
     0 1px 0px 2px rgba(255, 255, 255, 0.7);
 }
 
 .button_container > button:after {
-  content: '';
+  content: "";
   -webkit-filter: blur(2px);
   -moz-filter: blur(2px);
   -o-filter: blur(2px);
@@ -183,11 +195,20 @@ font-size: 20px;
   background: transparent;
 }
 .button_container > button:active {
-  box-shadow: inset 0 3px 5px 0 rgba(93, 80, 51, 0.4), inset 0 5px 10px 2px rgba(204, 196, 178, 0.8), inset 0 4px 6px 0 rgba(255,255,255,0.8), 0 -1px 0px 2px #CCC4B2, 0 1px 0px 2px rgba(255,255,255,0.7);
+  box-shadow:
+    inset 0 3px 5px 0 rgba(93, 80, 51, 0.4),
+    inset 0 5px 10px 2px rgba(204, 196, 178, 0.8),
+    inset 0 4px 6px 0 rgba(255, 255, 255, 0.8),
+    0 -1px 0px 2px #ccc4b2,
+    0 1px 0px 2px rgba(255, 255, 255, 0.7);
 }
 
 .button_container > button.equal:active {
-  box-shadow: inset 0 3px 5px 0 rgba(164,27,21,1), inset 0 5px 10px 2px rgba(164,27,21, 0.5), 0 -1px 0px 2px #CCC4B2, 0 1px 0px 2px rgba(255,255,255,0.7);  
+  box-shadow:
+    inset 0 3px 5px 0 rgba(164, 27, 21, 1),
+    inset 0 5px 10px 2px rgba(164, 27, 21, 0.5),
+    0 -1px 0px 2px #ccc4b2,
+    0 1px 0px 2px rgba(255, 255, 255, 0.7);
 }
 .button_container > button.equal {
   bottom: 0;
@@ -195,56 +216,93 @@ font-size: 20px;
   color: #ffffff;
 
   background: #ee6123;
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3),
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.3),
     inset 0 -3px 1px 0 rgba(164, 27, 21, 1),
     inset 0 -5px 10px 2px rgba(164, 27, 21, 0.5),
-    inset 0 4px 6px 0 rgba(255, 255, 255, 0.1), 0 -1px 0px 2px #ccc4b2,
+    inset 0 4px 6px 0 rgba(255, 255, 255, 0.1),
+    0 -1px 0px 2px #ccc4b2,
     0 1px 0px 2px rgba(255, 255, 255, 0.7);
- 
+
   height: 120px;
 }
-.button_container> button.equal:after {
+.button_container > button.equal:after {
   top: 128px;
 }
-
 
 .button_container > .zero {
   width: 157px;
 }
-.button_container{
+.button_container {
   width: 100%;
-  display: grid; 
-  grid-template-columns: 1fr 1fr 1fr 1fr; 
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr; 
-  gap: 0px 0px; 
-  grid-template-areas: 
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
     "reset ce operation multi"
     "sept huit neuf minus"
     "quatre cinq six plus"
     "un deux trois equal"
-    "zero zero point equal"; 
-    justify-content: center;
-    align-items: start;
-    align-content: center;
-    margin: 0px;
+    "zero zero point equal";
+  justify-content: center;
+  align-items: start;
+  align-content: center;
+  margin: 0px;
 }
-.reset { grid-area: reset; }
-.ce { grid-area: ce; }
-.operation { grid-area: operation; }
-.multi { grid-area: multi; }
-.sept { grid-area: sept; }
-.huit { grid-area: huit; }
-.neuf { grid-area: neuf; }
-.minus { grid-area: minus; }
-.quatre { grid-area: quatre; }
-.cinq { grid-area: cinq; }
-.six { grid-area: six; }
-.plus { grid-area: plus; }
-.un { grid-area: un; }
-.deux { grid-area: deux; }
-.trois { grid-area: trois; }
-.zero { grid-area: zero; 
-text-align: center;
-justify-self: center;}
-.point { grid-area: point; }
-.equal { grid-area: equal; }
+.reset {
+  grid-area: reset;
+}
+.ce {
+  grid-area: ce;
+}
+.operation {
+  grid-area: operation;
+}
+.multi {
+  grid-area: multi;
+}
+.sept {
+  grid-area: sept;
+}
+.huit {
+  grid-area: huit;
+}
+.neuf {
+  grid-area: neuf;
+}
+.minus {
+  grid-area: minus;
+}
+.quatre {
+  grid-area: quatre;
+}
+.cinq {
+  grid-area: cinq;
+}
+.six {
+  grid-area: six;
+}
+.plus {
+  grid-area: plus;
+}
+.un {
+  grid-area: un;
+}
+.deux {
+  grid-area: deux;
+}
+.trois {
+  grid-area: trois;
+}
+.zero {
+  grid-area: zero;
+  text-align: center;
+  justify-self: center;
+}
+.point {
+  grid-area: point;
+}
+.equal {
+  grid-area: equal;
+}
