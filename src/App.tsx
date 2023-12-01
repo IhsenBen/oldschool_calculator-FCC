@@ -21,7 +21,7 @@ const buttonData = [
   { label: "9" },
   { label: "=" },
   { label: "0" },
-  { label: "." },
+  // { label: "." },
 ];
 
 type ButtonProps = {
@@ -29,9 +29,11 @@ type ButtonProps = {
   onClick: (e: MouseEvent<HTMLButtonElement>) => void;
 };
 const CalculatorButton = ({ label, onClick }: ButtonProps) => (
+  <Grid item xs={label == "0" ? 9 : 3 } >
   <button onClick={onClick} id={label} key={label}>
     {label}
   </button>
+  </Grid>
 );
 
 function App() {
@@ -81,7 +83,7 @@ function App() {
             readOnly
           />
         </Grid>
-        <Grid item container spacing={1} className="button_container">
+        <Grid item container spacing={1} className="button_container" justifyContent={"flex-start"} p={2}>
           {buttonData.map((data) => (
             <CalculatorButton label={data.label} onClick={handleClick} key={data.label}/>
           ))}

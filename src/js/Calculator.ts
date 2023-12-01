@@ -58,6 +58,7 @@ class Calculator {
         }
         return;
       default:
+        // decimals don't work yet
         if (typeof lastItem === "string" && lastItem.includes(".")) {
           const updatedecimal = `${lastItem}${input}`;
           expression.pop();
@@ -68,11 +69,20 @@ class Calculator {
           return;
         }
         if (isLastItemNumber && isNumber) {
-          const updatedNum = Number(lastItem) * 10 + Number(input);
-          expression.pop();
-          expression.push(updatedNum);
+          if (Number.isInteger(lastItem)) {
+            const updatedNum = Number(lastItem) * 10 + Number(input);
+            expression.pop();
+            expression.push(updatedNum);
+          } else {
+            const decimalPlaces = String(lastItem).split('.')[1]?.length || 0;
+            const updatedNum = Number(lastItem) + Number(input) / Math.pow(10, decimalPlaces + 1);
+            expression.pop();
+            expression.push(updatedNum);
+          }
           return expression;
         } else {
+          gap={3}
+        >
           expression.push(isNumber ? Number(input) : input);
           return expression;
         }
