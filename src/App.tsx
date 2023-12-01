@@ -1,7 +1,7 @@
-import "./App.css";
-import React, { MouseEvent, useState } from "react";
 import { Grid } from "@mui/material";
-// import Calculator from "./js/Calculator";
+import { MouseEvent, useState } from "react";
+import "./App.css";
+import Calculator, { Expression, Input } from "./js/Calculator";
 
 const buttonData = [
   { label: "AC" },
@@ -35,14 +35,24 @@ const CalculatorButton = ({ label, onClick }: ButtonProps) => (
 );
 
 function App() {
-  const [display, setDisplay] = useState<number|string>(0);
+  const [expression, setExpression] = useState<Expression>([]);
+  const [display, setDisplay] = useState<Input>(expression[0] || "");
 
-  // const calculator = new Calculator();
+  const calculator = new Calculator();
 
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
-    const value = e.currentTarget.id;
-    console.log(value);
-    setDisplay(value);
+    const value = e.currentTarget.id as Input;
+    if (value === "=") {
+      const result = calculator.calculateResult(expression);
+      setDisplay(String(result));
+      setExpression([result]);
+      return;
+    }
+    const expressionValue = calculator.handleExpression(value, expression);
+    setDisplay(String(calculator.handleDisplay(expression, value)));
+    if (expressionValue) {
+      setExpression(expressionValue);
+    }
   };
 
   return (
@@ -71,13 +81,9 @@ function App() {
             readOnly
           />
         </Grid>
-
         <Grid item container spacing={1} className="button_container">
           {buttonData.map((data) => (
-            <CalculatorButton
-              label={data.label}
-              onClick={handleClick}
-            />
+            <CalculatorButton label={data.label} onClick={handleClick} key={data.label}/>
           ))}
         </Grid>
       </Grid>

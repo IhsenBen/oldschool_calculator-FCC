@@ -1,41 +1,89 @@
+// TODO[]: Make it Dry and clean up the code
+// TODO[]: refract the types and the common array operations
+export type Display = string[];
+export type Operators = "+" | "-" | "*" | "/";
+export type Input = number | Operators | "." | "AC" | "CE" | "=" | string;
+export type Expression = Input[];
+
+// just chaining inputs in an Array and calculate it on =
+// which allowe chaining of operations
 class Calculator {
-  private expression: string[];
-  private operator: string;
-  private readonly operators: string[] = ["+", "-", "*", "/"];
-  private result: number;
-
-  constructor() {
-    this.expression = [];
-    this.operator = "";
-    this.result = 0;
-  }
-  private isOperator(input: string): boolean {
-    return this.operators.includes(input);
+  private isOperator(input: Input): input is Operators {
+    return ["+", "-", "*", "/"].includes(input as Operators);
   }
 
-  private handleNumber(input: string): void {
-        const lastItem = this.expression[this.expression.length - 1];
-    if (this.isOperator(lastItem)) {
-    this.expression.push(input);
+  public handleDisplay(expression: Expression, input: Input): Input {
+    const lastItem = expression[expression.length - 1];
+    switch (input) {
+      case "AC":
+        return "0";
+      case "CE":
+        return lastItem ? lastItem : "0";
+      default:
+        return lastItem;
     }
   }
 
-  private handleOperator(input: string): void {
-    if (this.expression.length === 0) {
-      return;
-    }
-    const lastItem = this.expression[this.expression.length - 1];
-    console.log(lastItem);
-    if (!this.isOperator(lastItem)) {
-      this.expression.push(input);
+  public handleExpression(
+    input: Input,
+    expression: Expression
+  ): Expression | undefined {
+    // this is messy needs to be cleaned up
+    // TODO[]: make helper function to update the expression
+    const lastItem = expression[expression.length - 1];
+    const isNumber = !Number.isNaN(Number(input));
+    const isLastItemNumber = !Number.isNaN(Number(lastItem));
+
+    switch (input) {
+      case "AC":
+        return [];
+      case "CE":
+        expression.pop();
+        return expression;
+      case "=":
+        if (isLastItemNumber) {
+          return [this.calculateResult(expression)];
+        } else {
+          expression.pop();
+          if (isLastItemNumber) {
+            expression.push(this.calculateResult([lastItem as number]));
+          }
+          return expression;
+        }
+      case ".":
+        if (isLastItemNumber) {
+          expression.pop();
+          expression.push(lastItem + input);
+          return expression;
+        }
+        return;
+      default:
+        if (typeof lastItem === "string" && lastItem.includes(".")) {
+          const updatedecimal = `${lastItem}${input}`;
+          expression.pop();
+          expression.push(Number(updatedecimal));
+          return expression;
+        }
+        if (this.isOperator(lastItem) && this.isOperator(input)) {
+          return;
+        }
+        if (isLastItemNumber && isNumber) {
+          const updatedNum = Number(lastItem) * 10 + Number(input);
+          expression.pop();
+          expression.push(updatedNum);
+          return expression;
+        } else {
+          expression.push(isNumber ? Number(input) : input);
+          return expression;
+        }
     }
   }
-  private calculateResult(): void {
-    let result = parseFloat(this.expression[0]);
 
-    for (let i = 1; i < this.expression.length; i += 2) {
-      const operator = this.expression[i];
-      const operand = parseFloat(this.expression[i + 1]);
+  public calculateResult(expression: Expression): number {
+    let result = expression[0] as number;
+    for (let i = 1; i < expression.length; i += 2) {
+      const operator = expression[i] as Operators;
+      const operand = expression[i + 1] as number;
 
       switch (operator) {
         case "+":
@@ -48,32 +96,18 @@ class Calculator {
           result *= operand;
           break;
         case "/":
-          result /= operand;
+          if (operand !== 0) {
+            result /= operand;
+          } else {
+            throw new Error("Division by zero is not allowed.");
+          }
           break;
         default:
           break;
       }
     }
 
-    this.result = result;
-  }
-
-  public handleClick(input: string): void | number {
-    if (this.isOperator(input)) {
-      this.handleOperator(input);
-    } else {
-      this.handleNumber(input);
-      console.log(this.expression);
-    }
-  }
-  public getCurrentInput(): string {
-    return this.expression.join("");
-  }
-
-  public getResult(): number {
-    this.calculateResult();
-    console.log(`${this.expression.join(" ")} = ${this.result}`);
-    return this.result;
+    return result;
   }
 }
 
